@@ -1,0 +1,17 @@
+rootProject.name = 'loginapp'
+
+def modulesDir = new File("${rootDir}/modules")
+if (modulesDir.exists()) {
+    modulesDir.eachDir { dir ->
+        if (new File("${dir.path}/build.gradle").exists()) {
+            logger.info("Found sub-project module in $dir")
+            include dir.name
+            project(":${dir.name}").projectDir = dir
+        }
+    }
+}
+
+gradle.allprojects {
+    group = 'com.qapil.login'
+    version = '0.1.0-SNAPSHOT'
+}

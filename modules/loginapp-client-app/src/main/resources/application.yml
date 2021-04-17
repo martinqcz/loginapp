@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.web.reactive: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          loginapp-client-oidc:
+            provider: spring
+            client-id: loginapp-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: loginapp-client-oidc
+          loginapp-client-authorization-code:
+            provider: spring
+            client-id: loginapp-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/authorized"
+            scope: loginapp.read
+            client-name: loginapp-client-authorization-code
+        provider:
+          spring:
+            issuer-uri: http://127.0.0.1:9000
