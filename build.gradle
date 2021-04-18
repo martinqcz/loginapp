@@ -3,10 +3,3 @@ task printVersion {
         println project.version
     }
 }
-
-allprojects {
-    // all source codes are in UTF-8
-    tasks.withType(JavaCompile) { JavaCompile compile ->
-        compile.options.encoding = 'UTF-8'
-    }
-}

@@ -2,5 +2,7 @@
 /.gradle/
 /bin/
 /build/
+/buildSrc/.gradle/
+/buildSrc/build/
 /modules/*/bin/
 /modules/*/build/
